@@ -11,7 +11,7 @@
 # │ │ │ │ │
 # * * * * *  command_to_execute
 
-# delete meraki.log and then restart syslog and run every 10 minutes
+# delete 75% of lines in meraki.log and then restart syslog and run every 10 minutes
 
 */10 * * * * (python3 /{"add path"}/deleteLines.py; systemctl restart syslog-ng) 2>&1 | logger -t mycmd
 
