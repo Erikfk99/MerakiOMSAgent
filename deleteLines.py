@@ -4,9 +4,9 @@ import os
 x = 0
 
 #open log file
-with open(r"/var/log/meraki.log", "r") as fp:
-    x = len(fp.readlines())
-    fp.close()
+with open(r"/var/log/meraki.log", "r") as file:
+    x = len(file.readlines())
+    file.close()
     
     
 x = x*0.75
