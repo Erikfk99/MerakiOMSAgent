@@ -1,4 +1,4 @@
-//Custom made to work with employer in sarps, to see the full see below line 220
+//Custom made to work with employer, to see the full from Meraki see below line 220
 
 
 let MerakiSyslogDevices = pack_array("nor01-sentlog019"); // replace server1 and server2 with your actual Cisco Meraki device(s) and add more with comma separated
@@ -213,10 +213,8 @@ union isfuzzy=true
             )
 | project-away Substring, Parser
 
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// 
 // filtering KQL provided from cisco meraki
 // Title:           Cisco Meraki
 // Author:          Microsoft
