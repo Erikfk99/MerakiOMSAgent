@@ -1,4 +1,4 @@
-# MerakiOMSAgent
+# MerakiOMSAgent with on-prem ubuntu server
 Repository to have everything needed to get syslogs from Meraki to microsoft sentinel
 This repository does not follow the "meraki connector in sentinel" to a tee.[^1]
 
