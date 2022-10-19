@@ -38,7 +38,7 @@ usr@ubuntu:~$ sudo crontab -e
 
 7. Add function to logs 
 * go to: log analytics workspace - logs
-* in new query add the code from functionFilterLogs.kql to new query (Changes may needed depending on how RawData ingest looks) 
+* in new query add the code from addFunctionParser.kql to new query (Changes may needed depending on how RawData ingest looks) 
 * Save as a funciton as CiscoMeraki
 
 8. Now the data connector should be changed to connected and you can download meraki workbook from contentHUB. 
