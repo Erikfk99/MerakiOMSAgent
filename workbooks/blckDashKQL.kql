@@ -1,0 +1,13 @@
+CiscoMeraki
+| where EventType has ""
+| where LogType has "security_event"
+| where EventSeverity has "High"
+| extend blckmsg = extract(@"decision=([a-z]+)", 1, LogMessage)
+| join kind=leftouter (
+    CiscoMeraki
+    | extend blckmsg = extract(@"decision=([a-z]+)", 1, LogMessage)
+    | summarize counted = count() by blckmsg
+) on blckmsg
+| project-away blckmsg1
+| make-series sum(counted) default=0 on TimeGenerated from ago(1d) to now() step 1h by blckmsg, DeviceName
+| render linechart
