@@ -1,4 +1,4 @@
-// add lincechart of blocked files 
+// add lincechart of blocked messages per Device 
 CiscoMeraki
 | where LogType has "security_event"
 | where DeviceName in ('' {SelectDevice}) // will add from parameters item in workbooks
