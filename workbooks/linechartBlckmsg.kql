@@ -1,8 +1,8 @@
 // add lincechart of blocked files 
 CiscoMeraki
 | where LogType has "security_event"
-| where DeviceName in ('' {SelectDevice})
-| where EventSeverity in ('' {SelectSeverity})
+| where DeviceName in ('' {SelectDevice}) // will add from parameters item in workbooks
+| where EventSeverity in ('' {SelectSeverity}) // will add from parameters item in workbooks
 | extend blckmsg = extract(@"decision=([a-z]+)", 1, LogMessage)
 | project TimeGenerated, DeviceName, blckmsg
 | make-series amount = count() default = 0 on TimeGenerated from ago(1d) to now() step 1h by DeviceName
