@@ -1,0 +1,4 @@
+CiscoMeraki
+| where LogType has "security_event"
+| extend blckmsg = extract(@"decision=([a-z]+)", 1, LogMessage)
+| where blckmsg == "allowed"
