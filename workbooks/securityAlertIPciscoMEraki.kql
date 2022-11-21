@@ -1,0 +1,12 @@
+let check = CiscoMeraki
+| extend SrcIpAddr = iff(isnotempty(SrcIpAddr), SrcIpAddr, "")
+| extend DstIpAddr = iff(isnotempty(DstIpAddr), DstIpAddr, "")
+| project todynamic(SrcIpAddr);
+
+SecurityAlert
+| extend IPEntit = extract(@"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b",0 , Entities)
+| project IPEntit
+| join kind=inner CiscoMeraki on $left.IPEntit == $right.SrcIpAddr
+
+SecurityAlert
+| where ExtendedProperties has "RU"
