@@ -1,0 +1,3 @@
+CiscoMeraki
+| extend LogType = iff(isempty(LogType), "empty", LogType)
+| summarize counted = count() by LogType
