@@ -1,0 +1,9 @@
+CiscoMeraki
+| where DeviceName in ('' {SelectDevice})
+| where LogType has "security_event"
+| where EventSeverity in ('' {SelectSeverity})
+| extend blckmsg = extract(@"decision=([a-z]+)", 1, LogMessage)
+| where blckmsg in ('' {SelectBlckMsg})
+| where TimeGenerated {SelectTimeRange}
+| make-series amount = count() default=0 on TimeGenerated to now() step 1h by Message
+| render barchart
