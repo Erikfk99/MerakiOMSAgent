@@ -1,0 +1,29 @@
+//Top affected source IP adresses 
+CiscoMeraki
+| where LogType in ('' {SelectLogType})
+| where isnotempty(SrcIpAddr)
+| summarize count() by SrcIpAddr
+| sort by count_
+
+
+//show logs in list Top source iP adresses 
+CiscoMeraki
+| where LogType in ('' {SelectLogType})
+| where isnotempty(SrcIpAddr)
+| where SrcIpAddr in ('' {SrcIpAddr})
+| project DeviceName, LogType, SrcIpAddr, SrcPortNumber, SrcMacAddr, DstIpAddr, DstPortNumber, DstMacAddr
+
+
+//top affected destination IP adresses
+CiscoMeraki
+| where LogType in ('' {SelectLogType})
+| where isnotempty(DstIpAddr)
+| summarize count() by DstIpAddr
+| sort by count_
+
+//show logs in list Top destination iP adresses 
+CiscoMeraki
+| where LogType in ('' {SelectLogType})
+| where isnotempty(DstIpAddr)
+| where DstIpAddr in ('' {DstIpAddr})
+| project DeviceName, LogType, SrcIpAddr, SrcPortNumber, SrcMacAddr, DstIpAddr, DstPortNumber, DstMacAddr
