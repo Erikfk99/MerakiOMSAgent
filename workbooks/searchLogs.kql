@@ -1,0 +1,5 @@
+CiscoMeraki
+| where LogType in ('' {LogType})
+| where EventType in ('' {EventType})
+| where DeviceName in ('' {DeviceNameLgSrch})
+| project-away TenantId, SourceSystem, MG, ManagementGroupName, Computer, Type, _ResourceId, Epoch, EpochTimestamp, EventStartTime, EventEndTime
