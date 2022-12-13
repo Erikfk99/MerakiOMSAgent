@@ -1,0 +1,4 @@
+CiscoMeraki
+| where LogType has "security_event"
+| extend EventSeverity = iff(isempty(EventSeverity), "empty", EventSeverity)
+| summarize counted = count() by EventSeverity
