@@ -1,0 +1,10 @@
+union isfuzzy=true 
+CiscoMeraki
+| where EventType has "Content_filtering_block"
+| extend 
+        urlblocked = extract(@"url=(\'(.*?)\')", 2, LogMessage),
+        category0 = extract(@"category0=(\'(.*?)\')", 2, LogMessage),
+        server = extract(@"server=(\'(.*?)\')", 2, LogMessage),
+        clientMac = extract(@"client_mac=(\'(.*?)\')", 2, LogMessage)
+| project DeviceName, EventType, urlblocked, category0, server, clientMac
+| summarize count () by urlblocked
